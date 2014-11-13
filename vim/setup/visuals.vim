@@ -24,7 +24,11 @@ set laststatus=2
 
 if has('gui_running')
     " set font for GVim
-    set guifont=Consolas_for_Powerline_FixedD:h12
+    if has('win32') || has('win64')
+        set guifont=Consolas_for_Powerline_FixedD:h12
+    else
+        set guifont=Consolas\ for\ Powerline\ 12
+    endif
 
     " suppress scrollbars
     set guioptions-=l
@@ -39,5 +43,5 @@ if has('gui_running')
     " maximize window on startup
     au GUIEnter * simalt ~x
 else
-    set term=xterm
+    set term=xterm-256color
 endif

@@ -1,5 +1,5 @@
-" change <leader> to comma ','
-let mapleader = ","
+" change <leader> to space ' '
+let mapleader = " "
 
 " make Ctrl+] easier on german keyboard in normal mode
 nnoremap ü <C-]>
@@ -11,6 +11,7 @@ noremap <leader>v :<C-u>vsplit<CR>
 
 " git
 noremap <leader>gs :Gstatus<CR>
+noremap <leader>gd :Gdiff<CR>
 
 " vimshell
 nnoremap <silent> <leader>sh :VimShellCreate<CR>
@@ -44,7 +45,10 @@ nnoremap <silent> <F3> :NERDTreeFind<CR>
 "=============================================================================
 nnoremap <leader>f :<C-u>Unite -start-insert file_rec file_mru file/new<CR>
 nnoremap <leader>g :<C-u>Unite grep:.<CR>
-nnoremap <leader>b :<C-u>Unite -start-insert buffer<CR>
+
+" buffers
+nnoremap <leader>ub :<C-u>Unite -start-insert -buffer-name=buffer -auto-resize buffer<CR>
+
 nnoremap <silent> <leader>uf :<C-u>Unite -start-insert -buffer-name=files -auto-resize -toggle file_rec<CR>
 nnoremap <silent> <leader>ua :<C-u>Unite -start-insert -buffer-name=files -auto-resize -toggle file_rec/async<CR>
 nnoremap <silent> <leader>ug :<C-u>Unite -start-insert -buffer-name=files file_rec/git:--cached:--others:--exclude-standard file_mru file/new<CR>

@@ -36,3 +36,6 @@ let $PATH=$PATH . ';C:\Users\Christian\Toolchains\x64\llvm\3.4\bin'
 
 " Add ag (silver searcher) to PATH
 let $PATH=$PATH . ';C:\Users\Christian\Programme\conemu\bin'
+
+" Reload vimrc after update
+autocmd! BufWritePost ~/.vimrc,~/dotfiles/vimrc source ~/.vimrc | AirlineRefresh

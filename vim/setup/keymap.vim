@@ -12,6 +12,7 @@ noremap <leader>v :<C-u>vsplit<CR>
 " git
 noremap <leader>gs :Gstatus<CR>
 noremap <leader>gd :Gdiff<CR>
+noremap <leader>gb :Gblame<CR>
 noremap <leader>gl :Glog<CR>
 noremap <leader>gu :Gpull<CR>
 
@@ -55,6 +56,8 @@ nnoremap <leader>g :<C-u>Unite grep:.<CR>
 " buffers
 nnoremap <leader>ub :<C-u>Unite -start-insert -buffer-name=buffer -auto-resize buffer<CR>
 
+nnoremap <leader>uu :<C-u>Unite -start-insert -auto-resize file file_rec/async:! buffer file_mru<CR>
+
 nnoremap <silent> <leader>uf :<C-u>Unite -start-insert -buffer-name=files -auto-resize -toggle file_rec<CR>
 nnoremap <silent> <leader>ua :<C-u>Unite -start-insert -buffer-name=files -auto-resize -toggle file_rec/async:!<CR>
 nnoremap <silent> <leader>ug :<C-u>Unite -start-insert -buffer-name=files file_rec/git:--cached:--others:--exclude-standard file_mru file/new<CR>
@@ -63,3 +66,4 @@ nnoremap <silent> <leader>ug :<C-u>Unite -start-insert -buffer-name=files file_r
 " YouCompleteMe
 "=============================================================================
 nnoremap <leader>jd :YcmCompleter GoTo<CR>
+au FileType cpp nnoremap <buffer> ü :YcmCompleter GoToDefinitionElseDeclaration<CR>

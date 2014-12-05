@@ -25,6 +25,8 @@ NeoBundle 'honza/vim-snippets'                      " snippets for various progr
 NeoBundle 'jaxbot/github-issues.vim'                " GitHub issue lookup
 NeoBundle 'mhinz/vim-startify'                      " Vim start screen
 NeoBundle 'Raimondi/delimitMate'                    " auto-completion for quotes, parens, brackets, etc.
+NeoBundle 'vim-scripts/BufOnly.vim'                 " command to close all buffers except current
+NeoBundle 'MarcWeber/vim-addon-local-vimrc'         " project-local vimrc
 
 NeoBundle 'YouCompleteMe'
 

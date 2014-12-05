@@ -12,6 +12,8 @@ noremap <leader>v :<C-u>vsplit<CR>
 " git
 noremap <leader>gs :Gstatus<CR>
 noremap <leader>gd :Gdiff<CR>
+noremap <leader>gl :Glog<CR>
+noremap <leader>gu :Gpull<CR>
 
 " vimshell
 nnoremap <silent> <leader>sh :VimShellCreate<CR>
@@ -19,6 +21,10 @@ nnoremap <silent> <leader>sh :VimShellCreate<CR>
 " tabs
 nnoremap <Tab> gt
 nnoremap <S-Tab> gT
+
+" buffers
+nnoremap <C-right> :bn<CR>
+nnoremap <C-left> :bp<CR>
 
 " opens tab edit command with the path of the currently edited file filled
 noremap <leader>te :tabedit <C-R>=expand("%:p:h") . "/" <CR>
@@ -50,9 +56,8 @@ nnoremap <leader>g :<C-u>Unite grep:.<CR>
 nnoremap <leader>ub :<C-u>Unite -start-insert -buffer-name=buffer -auto-resize buffer<CR>
 
 nnoremap <silent> <leader>uf :<C-u>Unite -start-insert -buffer-name=files -auto-resize -toggle file_rec<CR>
-nnoremap <silent> <leader>ua :<C-u>Unite -start-insert -buffer-name=files -auto-resize -toggle file_rec/async<CR>
+nnoremap <silent> <leader>ua :<C-u>Unite -start-insert -buffer-name=files -auto-resize -toggle file_rec/async:!<CR>
 nnoremap <silent> <leader>ug :<C-u>Unite -start-insert -buffer-name=files file_rec/git:--cached:--others:--exclude-standard file_mru file/new<CR>
-nnoremap <silent> <leader>us :<C-u>Unite -quick-match buffer<CR>
 
 "=============================================================================
 " YouCompleteMe

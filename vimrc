@@ -25,5 +25,6 @@ source ~/.vim/setup/unite.vim
 if has("autocmd")
     autocmd FileType cpp setlocal shiftwidth=4 softtabstop=4 expandtab
     autocmd FileType cpp setlocal foldmethod=indent nofoldenable
+    autocmd FileType cpp setlocal nowrap
 endif
 

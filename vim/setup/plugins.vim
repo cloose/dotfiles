@@ -18,6 +18,7 @@ NeoBundle 'scrooloose/nerdtree'                     " filesystem tree explorer
 NeoBundle 'scrooloose/nerdcommenter'                " 
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'                       " Most recent used files
+NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'Shougo/vimproc.vim', {'build': {'windows': 'tools\\update-dll-mingw'}}
 NeoBundle 'Shougo/vimshell.vim'                     " Shell inside vim
 NeoBundle 'SirVer/ultisnips'                        " ultimate solution for snippets

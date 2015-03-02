@@ -43,6 +43,7 @@ nnoremap <leader>tb :TagbarToggle<CR>
 "=============================================================================
 " <F2> shows filesystem tree explorer for all modes
 noremap <F2> :NERDTreeToggle<CR>
+noremap <C-F2> :NERDTreeTabsToggle<CR>
 
 " <F3> finds current file in tree in normal mode
 nnoremap <silent> <F3> :NERDTreeFind<CR>

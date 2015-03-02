@@ -21,6 +21,7 @@ source ~/.vim/setup/ultisnips.vim
 source ~/.vim/setup/ycm.vim
 source ~/.vim/setup/tagbar.vim
 source ~/.vim/setup/unite.vim
+source ~/.vim/setup/vim-nerdtree-tabs.vim 
 
 if has("autocmd")
     autocmd FileType cpp setlocal shiftwidth=4 softtabstop=4 expandtab

@@ -1,47 +1,25 @@
-" terminal settings
-set termencoding=utf-8
-set t_Co=256
-let &t_AB="\e[48;5;%dm"
-let &t_AF="\e[38;5;%dm"
+"
+" Visual Configuration
+"
 
-" set color scheme
-colorscheme molokai
-
-" turn on syntax highlighting
-syntax on
-
-" show the line and column of the cursor position
-set ruler
-
-" show line number
-set number
-
-" set window title
-set title
-
-" always show status line
-set laststatus=2
-
-if has('gui_running')
-    " set font for GVim
-    if has('win32') || has('win64')
-        set guifont=Consolas_for_Powerline_FixedD:h12
-    else
-        set guifont=Consolas\ for\ Powerline\ 12
-    endif
-
-    " suppress scrollbars
-    set guioptions-=l
-    set guioptions-=L
-    set guioptions-=r
-    set guioptions-=R
-
-    " remove the toolbar and menu
-    set guioptions-=T
-    set guioptions-=m
-
-    " maximize window on startup
-    au GUIEnter * simalt ~x
-else
-    set term=xterm-256color
+if has('termguicolors')
+    set termguicolors                            " active 24-bit color support
 endif
+
+syntax enable                                    " turn on syntax highlighting
+
+" color scheme onedark
+set background=dark                              " expect dark background
+packadd onedark.vim
+colorscheme onedark
+
+set title                                        " set window title
+set number                                       " show line number
+set relativenumber                               " line numbers are relative
+set ruler                                        " show line and column of cursor position
+set laststatus=2                                 " always show status line
+
+set wildmenu                                     " show completion matches above command line
+
+set showcmd                                      " show typed keys if more are expected
+set noshowmode                                   " do not show mode (already done by airline)

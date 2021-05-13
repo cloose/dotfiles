@@ -1,70 +1,61 @@
-" change <leader> to space ' '
-let mapleader = " "
-
-" make Ctrl+] easier on german keyboard in normal mode
-nnoremap ü <C-]>
-nnoremap Ü <C-O>
+let mapleader=","                      " change <leader> to comma ','
 
 " window split
 noremap <leader>h :<C-u>split<CR>
 noremap <leader>v :<C-u>vsplit<CR>
-
-" git
-noremap <leader>gs :Gstatus<CR>
-noremap <leader>gd :Gdiff<CR>
-noremap <leader>gb :Gblame<CR>
-noremap <leader>gl :Glog<CR>
-noremap <leader>gu :Gpull<CR>
-
-" vimshell
-nnoremap <silent> <leader>sh :VimShellCreate<CR>
 
 " tabs
 nnoremap <Tab> gt
 nnoremap <S-Tab> gT
 
 " buffers
+nnoremap <C-up> <C-W>w
+nnoremap <C-down> <C-W>W
 nnoremap <C-right> :bn<CR>
 nnoremap <C-left> :bp<CR>
 
-" opens tab edit command with the path of the currently edited file filled
-noremap <leader>te :tabedit <C-R>=expand("%:p:h") . "/" <CR>
+" git
+noremap <leader>gs :Gstatus<CR>
+noremap <leader>gd :Gdiff<CR>
+noremap <leader>gb :Gblame<CR>
+noremap <leader>gl :Glog<CR>
 
-" set working directory
+" set current working directory
 nnoremap <leader>. :lcd %:p:h<CR>
 
-"=============================================================================
-" Tagbar
-"=============================================================================
-nnoremap <leader>tb :TagbarToggle<CR>
+" fzf
+nnoremap <leader>ff :<C-u>Files<CR>
+nnoremap <leader>fb :<C-u>Buffers<CR>
+nnoremap <leader>fs :<C-u>Ag
+nnoremap <leader>fl :<C-u>BLines
 
-"=============================================================================
+" ALE
+nmap <silent> [g <Plug>(ale_previous_wrap)
+nmap <silent> ]g <Plug>(ale_next_wrap)
+
+" asyncomplete
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+
+" vim-test
+nmap <silent> <leader>tn :TestNearest<CR>
+nmap <silent> <leader>tf :TestFile<CR>
+nmap <silent> <leader>ts :TestSuite<CR>
+nmap <silent> <leader>tl :TestLast<CR>
+nmap <silent> <leader>tv :TestVisit<CR>
+
 " NERDTree
-"=============================================================================
-" <F2> shows filesystem tree explorer for all modes
-noremap <F2> :NERDTreeToggle<CR>
-noremap <C-F2> :NERDTreeTabsToggle<CR>
+map <leader>nt :NERDTreeToggle<CR>
+map <leader>nf :NERDTreeFind<CR>
 
-" <F3> finds current file in tree in normal mode
-nnoremap <silent> <F3> :NERDTreeFind<CR>
+" Tagbar
+" nnoremap <leader>tb :TagbarToggle<CR>
+nnoremap <leader>tb :Vista!!<CR>
 
-"=============================================================================
-" Unite
-"=============================================================================
-nnoremap <leader>f :<C-u>Unite -start-insert file_rec file_mru file/new<CR>
-nnoremap <leader>g :<C-u>Unite grep:.<CR>
+" neosnippet - expand snippet on Ctrl-k
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_or_jump)
+nmap <C-k> <Plug>(neosnippet_expand_or_jump)
 
-" buffers
-nnoremap <leader>ub :<C-u>Unite -start-insert -buffer-name=buffer -auto-resize buffer<CR>
-
-nnoremap <leader>uu :<C-u>Unite -start-insert -auto-resize file file_rec/async:! buffer file_mru<CR>
-
-nnoremap <silent> <leader>uf :<C-u>Unite -start-insert -buffer-name=files -auto-resize -toggle file_rec<CR>
-nnoremap <silent> <leader>ua :<C-u>Unite -start-insert -buffer-name=files -auto-resize -toggle file_rec/async:!<CR>
-nnoremap <silent> <leader>ug :<C-u>Unite -start-insert -buffer-name=files file_rec/git:--cached:--others:--exclude-standard file_mru file/new<CR>
-
-"=============================================================================
-" YouCompleteMe
-"=============================================================================
-nnoremap <leader>jd :YcmCompleter GoTo<CR>
-au FileType cpp nnoremap <buffer> ü :YcmCompleter GoToDefinitionElseDeclaration<CR>

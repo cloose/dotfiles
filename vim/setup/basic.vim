@@ -1,41 +1,33 @@
+" 
+" Basic Configuration
+"
+
 " encoding
 set encoding=utf-8
 
-" fix backspace indent
-set backspace=indent,eol,start
-
-" no need to save changed buffers before switching to other buffers
-set hidden
+" typing
+set backspace=indent,eol,start              " fix backspace indent
+set autoindent                              " use indent of previous line
 
 " default settings for tabs & spaces
-set shiftwidth=4 softtabstop=4
-set expandtab
+set shiftwidth=4                            " width used for indents (>>)
+set softtabstop=-1                          " use shiftwidth for tab and backspace keys
+set expandtab                               " use spaces instead of tabs
+set tabstop=8                               " tab chars indent by 8 spaces
 
-" increase command history size
-set history=2000
+set history=2000                            " increase command history size
 
 " searching
 set hlsearch                                " highlight matches
 set incsearch                               " start search before pressing enter
 
-" use The Silver Searcher (https://github.com/ggreer/the_silver_searcher)
-" instead of grep
-if executable('ag')
-    set grepprg=ag\ --nogroup\ --nocolor
-endif
+" splits
+set splitbelow                              " open horizontal splits below
+set splitright                              " open vertical splits to the right
 
-" allow vim settings per folder/project
-set exrc
-set secure
+" netrw
+let g:netrw_banner=0                        " hide banner
+let g:netrw_liststyle=3                     " tree view
 
-" Add Qt 5.2.1 and mingw-w64 toolchain (as used by Qt 5.2.1) to PATH
-let $PATH=$PATH . ';C:\Qt\Qt5.2.1\5.2.1\mingw48_32\bin;C:\Users\Christian\Programme\conemu\vendor\mingw-w64\x32-4.8.0-release-posix-dwarf-rev2\bin'
-
-" Add LLVM for YCM to PATH
-let $PATH=$PATH . ';C:\Users\Christian\Toolchains\x64\llvm\3.4\bin'
-
-" Add ag (silver searcher) to PATH
-let $PATH=$PATH . ';C:\Users\Christian\Programme\conemu\bin'
-
-" Reload vimrc after update
-autocmd! BufWritePost ~/.vimrc,~/dotfiles/vimrc source ~/.vimrc | AirlineRefresh
+" ignore these files when searching
+set wildignore+=*.swp,*.pyc,__pycache__

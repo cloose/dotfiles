@@ -1,45 +1,60 @@
-"=============================================================================
-" Install plugins via NeoBundle
-"=============================================================================
+"
+" Plugin Installation via minpac (https://github.com/k-takata/minpac)
+"
 
-" initialize NeoBundle, required
-call neobundle#begin(expand('~/.vim/bundle/'))
+" Define function for installation of plugins
+function! PackInit() abort
+  packadd minpac                                                " add minpac plugin package
 
-" let NeoBundle manage NeoBundle, required
-NeoBundleFetch 'Shougo/neobundle.vim'
+  call minpac#init()                                            " initialize minpac
+  call minpac#add('k-takata/minpac', {'type': 'opt'})           " let minpac manage itself
 
-" Plugins list
-NeoBundle 'airblade/vim-gitgutter'                  " show changed lines
-NeoBundle 'tpope/vim-fugitive'                      " a Git wrapper
-NeoBundle 'idanarye/vim-merginal'                   " fugitive extension to manage Git branches
-NeoBundle 'majutsushi/tagbar'                       " Source code browser (ctags)
-NeoBundle 'bling/vim-airline'                       " lean & mean status/tabline
-NeoBundle 'tomasr/molokai'                          " color scheme
-NeoBundle 'jistr/vim-nerdtree-tabs'
-NeoBundle 'scrooloose/nerdtree'                     " filesystem tree explorer
-NeoBundle 'scrooloose/nerdcommenter'                " 
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neomru.vim'                       " Most recent used files
-NeoBundle 'tsukkee/unite-tag'
-NeoBundle 'Shougo/vimproc.vim', {'build': {'windows': 'tools\\update-dll-mingw'}}
-NeoBundle 'Shougo/vimshell.vim'                     " Shell inside vim
-NeoBundle 'SirVer/ultisnips'                        " ultimate solution for snippets
-NeoBundle 'honza/vim-snippets'                      " snippets for various programming languages
-NeoBundle 'jaxbot/github-issues.vim'                " GitHub issue lookup
-NeoBundle 'mhinz/vim-startify'                      " Vim start screen
-NeoBundle 'Raimondi/delimitMate'                    " auto-completion for quotes, parens, brackets, etc.
-NeoBundle 'vim-scripts/BufOnly.vim'                 " command to close all buffers except current
-NeoBundle 'vim-scripts/a.vim'                       " open alternate file (header->source)
-NeoBundle 'MarcWeber/vim-addon-local-vimrc'         " project-local vimrc
+  " plugins list
+  call minpac#add('tpope/vim-commentary')                       " comment handling operators (gcc, gc)
+  call minpac#add('tpope/vim-dispatch')                         " async build&test dispatcher
+  call minpac#add('tpope/vim-projectionist')                    " project configuration
 
-NeoBundle 'YouCompleteMe'
+  call minpac#add('vim-airline/vim-airline')                    " lean & mean status/tabline
+  call minpac#add('junegunn/fzf', {'do': {-> fzf#install()}})   " fuzzy file search
+  call minpac#add('junegunn/fzf.vim')                           " fuzzy file search for vim
+  call minpac#add('mileszs/ack.vim')                            " use ag as grep replacement
+  call minpac#add('preservim/nerdtree')                         " file browser
 
-" All of your Plugins must be added before the following line
-call neobundle#end()
+  " git support
+  call minpac#add('tpope/vim-fugitive')                         " a git wrapper
+  call minpac#add('airblade/vim-gitgutter')                     " git diff markers in column
 
-filetype plugin indent on    " required
+  " snippets
+  call minpac#add('Shougo/neosnippet.vim')                      " snippet support
+  call minpac#add('Shougo/neosnippet-snippets')                 " default collection of snippets
+  call minpac#add('honza/vim-snippets')                         " extra collection of snippets
 
-" if there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
+  " auto-completion
+  call minpac#add('prabirshrestha/vim-lsp')                     " async language server protocol (LSP) plugin
+  call minpac#add('prabirshrestha/asyncomplete.vim')            " asynchronous completer
+  call minpac#add('prabirshrestha/asyncomplete-lsp.vim')        " LSP source for asyncomplete
+  call minpac#add('prabirshrestha/asyncomplete-neosnippet.vim') " neosnippet source for asyncomplete
+  call minpac#add('prabirshrestha/asyncomplete-tags.vim')       " tags file source for asyncomplete
+  call minpac#add('prabirshrestha/asyncomplete-buffer.vim')     " buffer source for asyncomplete
 
+  " software development
+  call minpac#add('dense-analysis/ale')                         " asynchronous linting engine
+  call minpac#add('vim-test/vim-test')                          " test runner
+  call minpac#add('majutsushi/tagbar')                          " display tags in sidebar
+  call minpac#add('rust-lang/rust.vim')                         " rust support
+
+  " color schemes
+  call minpac#add('joshdick/onedark.vim', {'type': 'opt'})
+  call minpac#add('KeitaNakamura/neodark.vim', {'type': 'opt'})
+  call minpac#add('tomasr/molokai', {'type': 'opt'})
+  call minpac#add('morhetz/gruvbox', {'type': 'opt'})
+
+  " test section
+  call minpac#add('liuchengxu/vista.vim')                       " tagbar with LSP support
+  call minpac#add('jeetsukumaran/vim-pythonsense')              " text objects for python
+  call minpac#add('jiangmiao/auto-pairs')                       " insert/delete brackets,etc in pairs
+endfunction
+
+command! PackUpdate source $MYVIMRC | call PackInit() | call minpac#update()
+command! PackClean source $MYVIMRC | call PackInit() | call minpac#clean()
+command! PackStatus packadd minpac | call minpac#status()

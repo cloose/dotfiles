@@ -43,6 +43,12 @@ return require('packer').startup(function(use)
     wants = 'nvim-web-devicons'
   }
 
+  -- Fancy greeter
+  use {
+    'goolord/alpha-nvim',
+    requires = 'nvim-tree/nvim-web-devicons'
+  }
+
   -- Highlight, edit, and navigate code
   use {
     'nvim-treesitter/nvim-treesitter',

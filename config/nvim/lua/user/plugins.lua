@@ -76,6 +76,12 @@ return require('packer').startup(function(use)
     }
   }
 
+  -- LSP diagnostics
+  use {
+    'folke/trouble.nvim',
+    requires = 'nvim-tree/nvim-web-devicons'
+  }
+
   -- fuzzy finder
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',

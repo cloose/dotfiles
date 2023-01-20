@@ -6,6 +6,7 @@ if not ok then return end
 lualine.setup {
   options = {
     theme = 'onedark'
+    -- theme = 'tokyonight'
   }
 }
 

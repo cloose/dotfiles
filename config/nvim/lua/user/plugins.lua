@@ -97,11 +97,16 @@ return require('packer').startup(function(use)
   -- file tree viewer
   use 'nvim-tree/nvim-tree.lua'
 
+  -- project management
+  use 'ahmedkhalf/project.nvim'
+
   -- Git related plugins
   use 'tpope/vim-fugitive'
 
   -- Color schemes
   use 'navarasu/onedark.nvim'
+  use 'folke/tokyonight.nvim'
+  use 'EdenEast/nightfox.nvim'
 
   -- terminal
   -- currently doesn't work well on Windows with Git Bash
